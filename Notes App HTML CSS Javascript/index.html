@@ -7,6 +7,42 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <script src="script.js"></script>
+    <div class="container">
+      <div class="add-btn">
+        <img src="img/add-icon.png" alt="" />
+      </div>
+      <div class="container-note">
+        <!-- <div class="box">
+          <div class="box-note">
+            <p>halo</p>
+          </div>
+          <div class="btn-note">
+            <button type="button" id="edit">edit</button>
+            <button type="button" id="hapus">hapus</button>
+          </div>
+        </div> -->
+      </div>
+      <!-- modal add -->
+      <div class="modal-container-new">
+        <h2>New Note</h2>
+        <textarea placeholder="enter your note..." name="textInput" id="textInputNew"></textarea>
+        <div class="btn-new">
+          <button type="button" id="create-btn-new">Create Note</button>
+          <button type="button" id="close-btn-new">Close</button>
+        </div>
+      </div>
+
+      <!-- modal edit -->
+      <div class="modal-container-edit">
+        <h2>edit Note</h2>
+        <textarea placeholder="enter your note..." name="textInput" id="textInputEdit"></textarea>
+        <div class="btn-edit">
+          <button type="button" id="create-btn-edit">Edit Note</button>
+          <button type="button" id="close-btn-edit">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="myRefactorScript.js"></script>
   </body>
 </html>

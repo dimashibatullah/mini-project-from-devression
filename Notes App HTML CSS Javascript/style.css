@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #8049fe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  position: relative;
+  padding: 20px;
+  width: 60%;
+  height: 500px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0px 0px 20px 0px #444343;
+  overflow: auto;
+}
+
+.container .add-btn {
+  width: 200px;
+  height: 200px;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #e7e3e3;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.container .add-btn:hover {
+  background-color: #efefef;
+}
+
+.container .container-note {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px 15px;
+}
+
+.container .box {
+  height: 200px;
+  background-color: #feef7a;
+  border-radius: 10px;
+
+  box-shadow: 3px 6px 10px 0px #3b3b3b;
+  padding: 20px;
+}
+
+.container .box .box-note {
+  overflow: auto;
+  height: 90%;
+}
+
+.container .box p {
+  white-space: pre-wrap;
+}
+
+.container .btn-note {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.container .btn-note #edit {
+  padding: 5px;
+  background-color: #8049fe;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.container .btn-note #edit:hover {
+  background-color: #6d38e8;
+}
+
+.container .btn-note #hapus {
+  background-color: #8049fe;
+  padding: 5px;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.container .btn-note #hapus:hover {
+  background-color: #6d38e8;
+}
+
+/* modal add style */
+.container .modal-container-new,
+.container .modal-container-edit {
+  position: absolute;
+  z-index: 999;
+  width: 300px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 17px 0px #3b3b3b;
+  display: none;
+}
+
+.modal-container-new h2,
+.modal-container-edit h2 {
+  margin-bottom: 10px;
+}
+
+.modal-container-new textarea,
+.modal-container-edit textarea {
+  width: 200px;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px auto;
+}
+
+.modal-container-new .btn-new,
+.modal-container-edit .btn-edit {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  gap: 20px;
+}
+
+.modal-container-new .btn-new #create-btn-new,
+.modal-container-edit .btn-edit #create-btn-edit {
+  padding: 5px 10px;
+  background-color: #834aff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-container-new .btn-new #create-btn-new:hover,
+.modal-container-edit .btn-edit #create-btn-edit:hover {
+  background-color: #6d42ca;
+}
+.modal-container-new .btn-new #close-btn-new,
+.modal-container-edit .btn-edit #close-btn-edit {
+  padding: 5px 10px;
+  background-color: #d6d6d6;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-container-new .btn-new #close-btn-new:hover,
+.modal-container-edit .btn-edit #close-btn-edit:hover {
+  background-color: #a2a1a1;
+}

@@ -12,42 +12,31 @@ const containerNote = document.querySelector(".container-note");
 const editBtn = document.querySelector("#edit");
 const hapusBtn = document.querySelector("#hapus");
 
-
-
-// ketika tombol add diklik
-addBtn.addEventListener("click", () => {
-  // munculkan modal add
+function showAddModal() {
   modalAdd.style.display = "block";
   textAreaNew.value = "";
-});
+}
 
-// settingan modal
-
-// ketika tombol close di klik
-closeBtnNew.addEventListener("click", () => {
+function closeModal() {
   modalAdd.style.display = "none";
-});
+}
 
-// ketika tombol create di klik
-createBtnNew.addEventListener("click", () => {
-  // ambil value pada input text area
-  let inputValue = textAreaNew.value;
-
+function createNewNote(input) {
   // cek isi text area
-  if (!inputValue) {
+  if (!input) {
     return alert("note tidak boleh kosong");
   }
 
   // buat card notes baru
   let content = "";
   content = `
-                <div class="box-note">
-                  <p>${inputValue}</p>
-                </div>
-                <div class="btn-note">
-                  <button type="button" id="edit">edit</button>
-                  <button type="button" id="hapus">hapus</button>
-                </div>`;
+                  <div class="box-note">
+                    <p>${input}</p>
+                  </div>
+                  <div class="btn-note">
+                    <button type="button" id="edit">edit</button>
+                    <button type="button" id="hapus">hapus</button>
+                  </div>`;
 
   let noteCard = document.createElement("DIV");
   noteCard.classList.add("box");
@@ -56,16 +45,47 @@ createBtnNew.addEventListener("click", () => {
 
   // close modal
   modalAdd.style.display = "none";
+}
 
-  saveData();
+function removeNote(element) {
+  element.parentNode.parentNode.style.display = "none";
+}
+
+function editNote(element, value) {
+  element.parentNode.previousElementSibling.firstElementChild.textContent = value;
+}
+
+function saveData() {
+  localStorage.setItem("noteData", containerNote.innerHTML);
+}
+
+function loadData() {
+  containerNote.innerHTML = localStorage.getItem("noteData");
+}
+
+// ketika tombol add diklik
+addBtn.addEventListener("click", () => {
+  showAddModal();
 });
 
+// ketika tombol close di klik
+closeBtnNew.addEventListener("click", () => {
+  closeModal();
+});
+
+// ketika tombol create di klik
+createBtnNew.addEventListener("click", () => {
+  // ambil value pada input text area
+  let inputValue = textAreaNew.value;
+  createNewNote(inputValue);
+  saveData();
+});
 
 // edit / hapus note
 document.addEventListener("click", (e) => {
   // jika tombol hapus di klik
   if (e.target.id == "hapus") {
-    e.target.parentNode.parentNode.style.display = "none";
+    removeNote(e.target);
     saveData();
 
     // jika tombol edit di klik
@@ -79,7 +99,7 @@ document.addEventListener("click", (e) => {
     // jika tombol edit note di klik
     createBtnEdit.addEventListener("click", () => {
       // ubah isi note
-      e.target.parentNode.previousElementSibling.firstElementChild.textContent = textAreaEdit.value;
+      editNote(e.target, textAreaEdit.value);
       modalEdit.style.display = "none";
       saveData();
     });
@@ -91,11 +111,4 @@ document.addEventListener("click", (e) => {
   }
 });
 
-function saveData() {
-  localStorage.setItem("noteData", containerNote.innerHTML);
-}
-
-function loadData() {
-  containerNote.innerHTML = localStorage.getItem("noteData");
-}
 loadData();
